@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.js"></script>
+<style>
+body {
+  margin: 0;
+}
+</style>
+<script>
+var mainScene = new Phaser.Scene("mainScene");
+
+mainScene.preload = function () {
+    // 画像の読み込み
+    this.load.image('sky', '../assets/images/sky.jpg');
+    // 画像の読み込み
+    this.load.image('countup','../assets/images/countup.png');
+    this.load.image('reset','../assets/images/reset.png');
+};
+
+mainScene.create = function () {
+    // 画像の表示
+    this.add.image(400,300,'sky');
+    
+    // カウントする変数
+    this.number = 0;
+    
+    // 文字の表示
+    this.text = this.add.text(400, 300, this.number , {
+        font: '40px Open Sans',
+        fill: '#ff0000'
+    });
+    
+    // カウントアップ画像の表示
+    this.countup = this.add.image(250, 400, 'countup');
+    // カウントアップ画像をクリック可能にする
+    this.countup.setInteractive(
+        { useHandCursor: true  }
+    );
+    // カウントアップ画像をクリックしたとき
+    this.countup.on('pointerdown',function(){
+        this.number++;
+        this.text.text = this.number;
+    },this);
+    
+    // リセット画像の表示
+    this.reset = this.add.image(550, 400, 'reset');
+    // リセット画像をクリック可能にする
+    this.reset.setInteractive(
+        { useHandCursor: true  }
+    );
+    // リセット画像をクリックしたとき
+    this.reset.on('pointerdown',function(){
+        this.number = 0;
+        this.text.text = this.number;
+    },this);
+};
+
+mainScene.update = function() {
+
+};
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: [mainScene],
+};
+
+var game = new Phaser.Game(config);
+</script>
+</head>
+<body>
+</body>
+</html>

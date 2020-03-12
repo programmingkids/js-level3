@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.js"></script>
+<style>
+body {
+  margin: 0;
+}
+</style>
+<script>
+var mainScene = new Phaser.Scene("mainScene");
+
+mainScene.preload = function () {
+    // 画像の読み込み
+    this.load.image('sky', '../assets/images/sky.jpg');
+    // 画像の読み込み
+    this.load.image('start','../assets/images/start.png');
+};
+
+mainScene.create = function () {
+    // 画像の表示
+    this.add.image(400,300,'sky');
+
+    // 文字の表示
+    this.text = this.add.text(360, 300, "" , {
+        font: '40px Open Sans',
+        fill: '#ff0000'
+    });
+    
+    // スタート画像の表示
+    this.startImage = this.add.image(400, 400, 'start');
+    // スタート画像をクリック可能にする
+    this.startImage.setInteractive(
+        { useHandCursor: true  }
+    );
+    // スタート画像をクリックしたとき
+    this.startImage.on('pointerdown',function(){
+        // 「1」から「6」の範囲でランダムな数値を作成
+        var randomNumber = Phaser.Math.RND.between(1, 6);
+        // 作成する画像の文字列
+        var omikuji = "";
+        // ランダムな数値に基づいて場合分け
+        switch (randomNumber) {
+            // 作成する画像を代入
+            case 1:
+                omikuji = "大吉";
+                break;
+            case 2:
+                omikuji = "中吉";
+                break;
+            case 3:
+                omikuji = "小吉";
+                break;
+            case 4:
+                omikuji = "吉";
+                break;
+            case 5:
+                omikuji = "末吉";
+                break;
+            case 6:
+                omikuji = "凶";
+                break;
+        }
+        this.text.text = omikuji;
+    },this);
+};
+
+mainScene.update = function() {
+
+};
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: [mainScene],
+};
+
+var game = new Phaser.Game(config);
+</script>
+</head>
+<body>
+</body>
+</html>
