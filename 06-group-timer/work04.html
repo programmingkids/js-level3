@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.js"></script>
+<style>
+body {
+  margin: 0;
+}
+</style>
+<script>
+var mainScene = new Phaser.Scene("mainScene");
+
+mainScene.preload = function () {
+    // 画像の読み込み
+    this.load.image('map01', '../assets/images/map01.png');
+    // 敵画像の読み込み
+    this.load.image('enemy05', '../assets/images/enemy05.png');
+};
+
+mainScene.create = function () {
+    // マップグループの作成
+    var map01Group = this.add.group({
+        key: 'map01',
+        frameQuantity: 192
+    });
+    // マップグループを利用して、マップ画像を敷き詰める
+    Phaser.Actions.GridAlign(map01Group.getChildren(), {
+        width: 16,
+        height: 12,
+        cellWidth: 50,
+        cellHeight: 50,
+        x: 25,
+        y: 25
+    });
+    // 敵グループの作成
+    this.enemyGroup = this.add.group();
+    
+    // 2秒ごとに敵を作成するタイマー処理開始
+    this.timeEvent = this.time.addEvent({
+        delay: 2000,
+        callback: this.createEnemy,
+        loop: true,
+        callbackScope: this
+    });
+};
+
+mainScene.update = function() {
+    // 敵グループから配列を取得
+    var enemies = this.enemyGroup.getChildren();
+    // 敵オブジェクトの配列に繰り返し処理
+    for(var i in enemies) {
+        // 個別の敵を取得
+        var enemy = enemies[i];
+        // 角度を加算
+        enemy.angle++;
+        if( enemy.angle >= 360 ) {
+            enemy.angle = 0;
+        }
+        // 回転
+        enemy.setAngle(enemy.angle);
+    }
+};
+
+mainScene.createEnemy = function() {
+    // 敵の作成
+    var enemy = this.enemyGroup.create(0,0,'enemy05');
+    // 敵をランダムな位置に配置
+    enemy.setRandomPosition(25,25,750, 550);
+    // 敵のサイズを変更
+    enemy.setDisplaySize(50,50);
+    // それぞれの敵が保持する回転角度
+    enemy.angle = 0;
+};
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: [mainScene],
+};
+
+var game = new Phaser.Game(config);
+</script>
+</head>
+<body>
+</body>
+</html>
