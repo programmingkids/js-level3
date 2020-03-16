@@ -89,18 +89,18 @@ mainScene.create = function () {
     // 宝箱作成
     this.createTreasure();
 
-    // 敵グループを作成　5体の敵を作成
-    this.enemies = this.add.group({
-        key: 'enemy01',
-        repeat: 5,
-    });
-
     // プレイヤーのHP
     this.hp = 50;
     // HPを文字で表示する
     this.hpText = this.add.text(30, 20, this.hp, {
         font: '40px Open Sans',
         fill: '#ff0000'
+    });
+    
+    // 敵グループを作成　5体の敵を作成
+    this.enemies = this.add.group({
+        key: 'enemy01',
+        repeat: 5,
     });
     
     // 敵グループの画像の設定
