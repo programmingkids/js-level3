@@ -52,13 +52,7 @@ mainScene.update = function() {
     for(var i in enemies) {
         // 個別の敵を取得
         var enemy = enemies[i];
-        // 角度を加算
-        enemy.angle++;
-        if( enemy.angle >= 360 ) {
-            enemy.angle = 0;
-        }
-        // 回転
-        enemy.setAngle(enemy.angle);
+        enemy.update();
     }
 };
 
@@ -71,6 +65,17 @@ mainScene.createEnemy = function() {
     enemy.setDisplaySize(50,50);
     // それぞれの敵が保持する回転角度
     enemy.angle = 0;
+    
+    // 更新
+    enemy.update = function() {
+        // 角度を加算
+        this.angle++;
+        if( this.angle >= 360 ) {
+            this.angle = 0;
+        }
+        // 回転
+        this.setAngle(this.angle);
+    };
 };
 
 var config = {
