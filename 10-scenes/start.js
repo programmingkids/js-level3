@@ -9,6 +9,6 @@ startScene.create = function () {
     // スタートボタン画像をクリックしたとき
     this.startButtonImage.on('pointerdown',function(){
         // メインシーンを起動する
-        this.scene.start('mainScene');
+        
     },this);
 };

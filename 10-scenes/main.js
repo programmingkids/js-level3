@@ -106,7 +106,7 @@ mainScene.create = function () {
     // リスタート画像をクリックしたとき
     this.restartImage.on('pointerdown',function(){
         // スタートシーンを起動します
-        this.scene.start("startScene");
+        
     },this);
 };
 
@@ -219,6 +219,6 @@ mainScene.gameOver = function() {
     // フェードアウト完了後に実行する
     this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
         // スタートシーンを起動します
-        this.scene.start("startScene");
+        
     }, this);
 };

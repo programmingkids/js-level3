@@ -119,17 +119,10 @@ mainScene.create = function () {
     // ゲームオーバーを表す変数
     this.isGameOver = false;
 
-    // リスタート画像の表示
-    this.restartImage = this.add.image(400, 500, 'restart');
-    // リスタート画像をクリックできるようにする
-    this.restartImage.setInteractive({
-        useHandCursor: true,
-    });
-    // リスタート画像をクリックしたとき
-    this.restartImage.on('pointerdown',function(){
-        // 現在のシーンをリスタートする
-        this.scene.restart();
-    },this);
+
+
+
+
 };
 
 mainScene.update = function() {

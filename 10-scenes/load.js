@@ -16,5 +16,5 @@ loadScene.preload = function () {
 
 loadScene.create = function() {
     // スタートシーンを自動的に開始します
-    this.scene.start("startScene");
+    
 };
