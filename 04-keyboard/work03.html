@@ -27,7 +27,7 @@ mainScene.create = function () {
     // 移動速度
     this.dx = 5;
     // 移動しているかの変数
-    this.isMoving = true;
+    
 };
 
 mainScene.update = function() {
@@ -39,23 +39,11 @@ mainScene.update = function() {
     if( this.robotImage.x <= 80 ) {
         this.dx = -this.dx;
     }
-    // キーボードのカーソルオブジェクトを取得
-    var cursors = this.input.keyboard.createCursorKeys();
-    // スペースキーがクリックされたら
-    if(cursors.space.isDown) {
-        if( this.isMoving ) {
-            // 移動停止
-            this.isMoving = false;
-        } else {
-            // 移動開始
-            this.isMoving = true;
-        }
-    }
-    // 変数「isMoving」が「true」ならば
-    if( this.isMoving ) {
-        // 移動処理
-        this.robotImage.x += this.dx;
-    }
+
+
+
+
+
 };
 
 var config = {
