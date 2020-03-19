@@ -26,20 +26,14 @@ mainScene.create = function () {
     this.robotImage.setDisplaySize(100,100);
     
     // 移動速度
-    this.dx = 5;
+    
 };
 
 mainScene.update = function() {
-    // 右端に到達したら
-    if( this.robotImage.x > 750 ) {
-        this.dx = -this.dx;
-    }
-    // 左端に到達したら
-    if( this.robotImage.x < 50 ) {
-        this.dx = -this.dx;
-    }
-    // 移動処理
-    this.robotImage.x += this.dx;
+    
+    
+    
+    
 };
 
 var config = {

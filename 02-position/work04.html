@@ -31,25 +31,10 @@ mainScene.create = function () {
 };
 
 mainScene.update = function() {
-    // 右端に到達したら
-    if( this.robotImage.x > 750 ) {
-        this.dx = -this.dx;
-    }
-    // 左端に到達したら
-    if( this.robotImage.x < 50 ) {
-        this.dx = -this.dx;
-    }
-    // 上端に到達したら
-    if( this.robotImage.y < 50 ) {
-        this.dy = -this.dy;
-    }
-    // 下端に到達したら
-    if( this.robotImage.y > 550 ) {
-        this.dy = -this.dy;
-    }
-    // 移動処理
-    this.robotImage.x += this.dx;
-    this.robotImage.y += this.dy;
+
+
+
+
 };
 
 var config = {
