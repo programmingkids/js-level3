@@ -115,15 +115,13 @@ mainScene.create = function () {
     }
     
     // ゲームオーバーを表す変数
-    this.isGameOver = false;
+    
 };
 
 mainScene.update = function() {
     // 終了処理なら、処理を実行しない
-    if( this.isGameOver ) {
-        this.player.anims.stop();
-        return;
-    }
+    
+    
     
     var speed = 5;
     var cursors = this.input.keyboard.createCursorKeys();
@@ -197,10 +195,9 @@ mainScene.update = function() {
             enemy.isHit = false;
         }
     }
-    if( this.hp <= 0) {
-        this.gameOver();
-        return;
-    }
+    
+    
+    
 };
 
 mainScene.createTreasure = function() {
@@ -212,23 +209,10 @@ mainScene.createTreasure = function() {
 };
 
 mainScene.gameOver = function() {
-    // ゲームオーバーにする
-    this.isGameOver = true;
-    
-    // メインカメラをシェークする
-    this.cameras.main.shake(1000);
-    
-    // シェークの完了後に実行する
-    this.cameras.main.on('camerashakecomplete', function(camera, effect) {
-        // 赤色にフェードアウトする
-        this.cameras.main.fadeOut(1000, 255, 0, 0);
-    }, this);
 
-    // フェードアウト完了後に実行する
-    this.cameras.main.on('camerafadeoutcomplete', function(camera, effect) {
-        // ゲームをリスタートする
-        this.scene.restart();
-    }, this);
+
+
+
 };
 
 var config = {
