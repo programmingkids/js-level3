@@ -15,7 +15,7 @@ mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('map01', '../assets/images/map01.png');
     // スプライト画像の読み込み
-    this.load.spritesheet('player', '../assets/images/player1.png', { frameWidth: 32, frameHeight: 32 });
+    
 };
 
 mainScene.create = function () {
@@ -83,25 +83,25 @@ mainScene.update = function() {
         // 右に移動
         this.player.x += speed;
         // 右向きのアニメーション
-        this.player.anims.play('right', true);
+        
     } else if(cursors.left.isDown) {
         // 左に移動
         this.player.x -= speed;
         // 左向きのアニメーション
-        this.player.anims.play('left', true);
+        
     } else if(cursors.up.isDown) {
         // 上に移動
         this.player.y -= speed;
         // 上向きのアニメーション
-        this.player.anims.play('up', true);
+        
     } else if(cursors.down.isDown) {
         // 下に移動
         this.player.y += speed;
         // 下向きのアニメーション
-        this.player.anims.play('down', true);
+        
     } else {
         // キーを放すとアニメーション停止
-        this.player.anims.stop();
+        
         // キーを放すと正面を向く
         //this.player.anims.play('turn', true);
     }
