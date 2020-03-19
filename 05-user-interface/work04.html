@@ -35,35 +35,10 @@ mainScene.create = function () {
         { useHandCursor: true  }
     );
     // スタート画像をクリックしたとき
-    this.startImage.on('pointerdown',function(){
-        // 「1」から「6」の範囲でランダムな数値を作成
-        var randomNumber = Phaser.Math.RND.between(1, 6);
-        // 作成する画像の文字列
-        var omikuji = "";
-        // ランダムな数値に基づいて場合分け
-        switch (randomNumber) {
-            // 作成する画像を代入
-            case 1:
-                omikuji = "大吉";
-                break;
-            case 2:
-                omikuji = "中吉";
-                break;
-            case 3:
-                omikuji = "小吉";
-                break;
-            case 4:
-                omikuji = "吉";
-                break;
-            case 5:
-                omikuji = "末吉";
-                break;
-            case 6:
-                omikuji = "凶";
-                break;
-        }
-        this.text.text = omikuji;
-    },this);
+
+
+
+
 };
 
 mainScene.update = function() {

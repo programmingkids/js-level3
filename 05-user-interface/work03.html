@@ -35,44 +35,10 @@ mainScene.create = function () {
     this.startImage.setInteractive(
         { useHandCursor: true  }
     );
-    // スタート画像をクリックしたとき
-    this.startImage.on('pointerdown',function(){
-        // 画像が存在する場合
-        if( this.image != null ) {
-            // 以前の画像を削除
-            this.image.destroy();
-        }
-        // 「1」から「6」の範囲でランダムな数値を作成
-        var randomNumber = Phaser.Math.RND.between(1, 6);
-        // 作成する画像の文字列
-        var enemyType = "";
-        // ランダムな数値に基づいて場合分け
-        switch (randomNumber) {
-            // 作成する画像を代入
-            case 1:
-                enemyType = "enemy01";
-                break;
-            case 2:
-                enemyType = "enemy02";
-                break;
-            case 3:
-                enemyType = "enemy03";
-                break;
-            case 4:
-                enemyType = "enemy04";
-                break;
-            case 5:
-                enemyType = "enemy05";
-                break;
-            case 6:
-                enemyType = "enemy06";
-                break;
-        }
-        // 画像を作成
-        this.image = this.add.image(400, 300, enemyType);
-        // 画像のサイズ変更
-        this.image.setDisplaySize(200, 200);
-    },this);
+
+
+
+
 };
 
 mainScene.update = function() {
