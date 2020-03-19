@@ -37,23 +37,17 @@ mainScene.create = function () {
     this.enemyGroup = this.add.group();
     
     // 2秒ごとに敵を作成するタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 2000,
-        callback: this.createEnemy,
-        loop: true,
-        callbackScope: this
-    });
+
+
+
+
 };
 
 mainScene.update = function() {
-    // 敵グループから配列を取得
-    var enemies = this.enemyGroup.getChildren();
-    // 敵オブジェクトの配列に繰り返し処理
-    for(var i in enemies) {
-        // 個別の敵を取得
-        var enemy = enemies[i];
-        enemy.update();
-    }
+
+
+
+
 };
 
 mainScene.createEnemy = function() {
@@ -66,16 +60,9 @@ mainScene.createEnemy = function() {
     // それぞれの敵が保持する回転角度
     enemy.angle = 0;
     
-    // 更新
-    enemy.update = function() {
-        // 角度を加算
-        this.angle++;
-        if( this.angle >= 360 ) {
-            this.angle = 0;
-        }
-        // 回転
-        this.setAngle(this.angle);
-    };
+
+
+
 };
 
 var config = {

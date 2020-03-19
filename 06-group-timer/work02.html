@@ -33,16 +33,10 @@ mainScene.create = function () {
         x: 25,
         y: 25
     });
-    // 敵グループの作成
-    this.enemyGroup = this.add.group();
-    
-    // 1.5秒ごとに敵を作成するタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 1500,
-        callback: this.createEnemy,
-        loop: true,
-        callbackScope: this
-    });
+
+
+
+
 };
 
 mainScene.update = function() {
@@ -50,12 +44,10 @@ mainScene.update = function() {
 };
 
 mainScene.createEnemy = function() {
-    // 敵の作成
-    var enemy = this.enemyGroup.create(0,0,'enemy01').setOrigin(0,0);
-    // 敵をランダムな位置に配置
-    enemy.setRandomPosition(0,0,750, 550);
-    // 敵のサイズを変更
-    enemy.setDisplaySize(50,50);
+
+
+
+
 };
 
 var config = {
