@@ -26,23 +26,16 @@ mainScene.create = function () {
     this.robotImage.setDisplaySize(200,200);
     
     // 画像幅の変化量
-    this.dx = 2;
+    
     // 画像の幅
-    this.w = 200;
+    
 };
 
 mainScene.update = function() {
-    // 画像幅が200より小さくなると
-    if(this.w < 200) {
-        this.dx = -this.dx;
-    }
-    // 画像幅が400より大きくなると
-    if( this.w > 400 ) {
-        this.dx = -this.dx;
-    }
-    // 画像幅を変更
-    this.w += this.dx;
-    this.robotImage.displayWidth = this.w;
+
+
+
+
 };
 
 var config = {

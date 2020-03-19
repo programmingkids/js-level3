@@ -25,31 +25,16 @@ mainScene.create = function () {
     // 画像のサイズを変更
     this.robotImage.setDisplaySize(100,100);
     
-    // 移動速度
-    this.dx = 5;
-    // 回転角度
-    this.angle = 0;
+    
+    
+    
 };
 
 mainScene.update = function() {
-    // 右端に到達したら
-    if( this.robotImage.x > 750 ) {
-        this.dx = -this.dx;
-    }
-    // 左端に到達したら
-    if( this.robotImage.x < 50 ) {
-        this.dx = -this.dx;
-    }
-    // 移動処理
-    this.robotImage.x += this.dx;
-    
-    // 角度を加算
-    this.angle++;
-    if( this.angle >= 360 ) {
-        this.angle = 0;
-    }
-    // 角度を変更
-    this.robotImage.setAngle( this.angle );
+
+
+
+
 };
 
 var config = {

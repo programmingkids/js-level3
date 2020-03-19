@@ -25,17 +25,14 @@ mainScene.create = function () {
     // 画像のサイズを変更
     this.robotImage.setDisplaySize(200,200);
     // 回転角度
-    this.angle = 0;
+    
 };
 
 mainScene.update = function() {
-    // 角度を加算
-    this.angle++;
-    if(this.angle >= 360) {
-        this.angle = 0;
-    }
-    // 角度を変更
-    this.robotImage.setAngle(this.angle);
+
+
+
+
 };
 
 var config = {
