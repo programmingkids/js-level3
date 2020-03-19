@@ -13,19 +13,14 @@ var mainScene = new Phaser.Scene("mainScene");
 
 mainScene.preload = function () {
     // 画像の読み込み
-    this.load.image('sky', '../assets/images/sky.jpg');
-    this.load.image('robot', '../assets/images/robot.png');
+    this.load.image('sky', 'assets/images/sky.jpg');
+    this.load.image('robot', 'assets/images/robot.png');
 };
 
 mainScene.create = function () {
     // 画像の表示
     this.add.image(400,300,'sky');
-    var robotImage = this.add.image(400,300,'robot');
-    
-    // 表示する画像サイズの変更
-    robotImage.setDisplaySize(150,300);
-    // 画像をX方向に反転
-    robotImage.setFlipX(true);
+
 };
 
 var config = {

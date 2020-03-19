@@ -13,18 +13,17 @@ var mainScene = new Phaser.Scene("mainScene");
 
 mainScene.preload = function () {
     // 画像の読み込み
-    this.load.image('sky', '../assets/images/sky.jpg');
-    this.load.image('robot', '../assets/images/robot.png');
+
+    
 };
 
 mainScene.create = function () {
     // 画像の表示
-    this.add.image(400,300,'sky');
-    var robotImage = this.add.image(50,50,'robot');
+    
     
     // 表示する画像サイズの変更
-    robotImage.displayWidth  = 100;
-    robotImage.displayHeight = 100;
+    
+    
     //robotImage.setDisplaySize(100,100);
     
     // 表示する画像サイズの変更を倍率で行う １が元のサイズ、0.5で半分にする
