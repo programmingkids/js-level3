@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="//cdn.jsdelivr.net/npm/phaser@3.21.0/dist/phaser.js"></script>
+<script src="data.js"></script>
+<script src="load.js"></script>
+<script src="start.js"></script>
+<script src="main.js"></script>
+<script src="battle.js"></script>
+<style>
+body {
+  margin: 0;
+}
+</style>
+<script>
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: [loadScene, startScene, mainScene, battleScene],
+};
+var game = new Phaser.Game(config);
+</script>
+</head>
+<body>
+</body>
+</html>
