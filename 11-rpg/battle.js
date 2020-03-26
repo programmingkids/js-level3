@@ -243,12 +243,12 @@ battleScene.attackPlayer = function() {
     text = "[" + point + "] のダメージを与えた";
     this.showMessage(text);
     
-    // プレイヤーのHP減算
+    // モンスターのHP減算
     this.monsterData.hp -= point;
     if(this.monsterData.hp <= 0) {
         this.monsterData.hp = 0;
     }
-    // 敵のHPを画面に反映
+    // モンスターのHPを画面に反映
     this.monsterHpText.text = this.monsterData.hp;
     
     if(this.monsterData.hp <= 0) {
