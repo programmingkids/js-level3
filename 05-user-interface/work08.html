@@ -39,10 +39,8 @@ mainScene.create = function () {
         { useHandCursor: true  }
     );
     // カウントアップ画像をクリックしたとき
-    this.countup.on('pointerdown',function(){
-        this.number++;
-        this.text.text = this.number;
-    },this);
+    
+
     
     // リセット画像の表示
     this.reset = this.add.image(550, 400, 'reset');
@@ -51,10 +49,9 @@ mainScene.create = function () {
         { useHandCursor: true  }
     );
     // リセット画像をクリックしたとき
-    this.reset.on('pointerdown',function(){
-        this.number = 0;
-        this.text.text = this.number;
-    },this);
+    
+
+    
 };
 
 mainScene.update = function() {
