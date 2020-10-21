@@ -32,33 +32,7 @@ mainScene.create = function () {
 };
 
 mainScene.update = function() {
-    // 右端に到達したら
-    if( this.robotImage.x > 750 ) {
-        this.robotImage.x = 750;
-        this.dx = 0;
-        this.dy = 5;
-    }
-    // 下端に到達したら
-    if( this.robotImage.y > 550 ) {
-        this.robotImage.y = 550;
-        this.dx = -5;
-        this.dy = 0;
-    }
-    // 左端に到達したら
-    if( this.robotImage.x < 50 ) {
-        this.robotImage.x = 50;
-        this.dx = 0;
-        this.dy = -5;
-    }
-    // 上端に到達したら
-    if( this.robotImage.y < 50 ) {
-        this.robotImage.y = 50;
-        this.dx = 5;
-        this.dy = 0;
-    }
-    // 移動処理
-    this.robotImage.x += this.dx;
-    this.robotImage.y += this.dy;
+
 };
 
 var config = {
