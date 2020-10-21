@@ -14,31 +14,16 @@ var mainScene = new Phaser.Scene("mainScene");
 mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('sky', '../assets/images/sky.jpg');
-    // 画像の読み込み
-    this.load.image('start','../assets/images/start.png');
 };
 
 mainScene.create = function () {
     // 画像の表示
     this.add.image(400,300,'sky');
-
     // 文字の表示
-    this.text = this.add.text(360, 300, "" , {
-        font: '40px Open Sans',
+    this.text = this.add.text(700, 50, "Hello" , {
+        font: '30px Open Sans',
         fill: '#ff0000'
     });
-    
-    // スタート画像の表示
-    this.startImage = this.add.image(400, 400, 'start');
-    // スタート画像をクリック可能にする
-    this.startImage.setInteractive(
-        { useHandCursor: true  }
-    );
-    // スタート画像をクリックしたとき
-
-
-
-
 };
 
 mainScene.update = function() {

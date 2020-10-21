@@ -15,7 +15,7 @@ mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('map01', '../assets/images/map01.png');
     // 敵画像の読み込み
-    this.load.image('enemy06', '../assets/images/enemy06.png');
+    this.load.image('enemy05', '../assets/images/enemy05.png');
 };
 
 mainScene.create = function () {
@@ -35,15 +35,42 @@ mainScene.create = function () {
     });
     // 敵グループの作成
     this.enemyGroup = this.add.group();
-    for( var i = 0; i < 10; i++ ) {
-        var enemy = this.enemyGroup.create(0,0,'enemy06').setOrigin(0,0);
-        enemy.setDisplaySize(50,50);
-        enemy.setRandomPosition(0,0, 750, 550);
-    }
+    
+    // 2秒ごとに敵を作成するタイマー処理開始
+    this.timeEvent = this.time.addEvent({
+        delay: 2000,
+        callback: this.createEnemy,
+        loop: true,
+        callbackScope: this
+    });
 };
 
 mainScene.update = function() {
-    
+    // 敵グループから配列を取得
+    var enemies = this.enemyGroup.getChildren();
+    // 敵オブジェクトの配列に繰り返し処理
+    for(var i in enemies) {
+        // 個別の敵を取得
+        var enemy = enemies[i];
+        // 角度を加算
+        enemy.angle++;
+        if( enemy.angle >= 360 ) {
+            enemy.angle = 0;
+        }
+        // 回転
+        enemy.setAngle(enemy.angle);
+    }
+};
+
+mainScene.createEnemy = function() {
+    // 敵の作成
+    var enemy = this.enemyGroup.create(0,0,'enemy05');
+    // 敵をランダムな位置に配置
+    enemy.setRandomPosition(25,25,750, 550);
+    // 敵のサイズを変更
+    enemy.setDisplaySize(50,50);
+    // それぞれの敵が保持する回転角度
+    enemy.angle = 0;
 };
 
 var config = {

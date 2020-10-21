@@ -14,24 +14,35 @@ var mainScene = new Phaser.Scene("mainScene");
 mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('sky', '../assets/images/sky.jpg');
+    this.load.image('robot', '../assets/images/robot.png');
 };
 
 mainScene.create = function () {
     // 画像の表示
     this.add.image(400,300,'sky');
-    // 文字の表示
-    this.text1 = this.add.text(50, 50, "Score: 50" , {
-        font: '30px Open Sans',
-        fill: '#ff0000'
-    });
-    this.text2 = this.add.text(650, 50, "HP: 25" , {
-        font: '30px Open Sans',
-        fill: '#ff0000'
-    });
+    // 画像を配置
+    this.robotImage = this.add.image(400,300,'robot');
+    // 画像のサイズを変更
+    this.robotImage.setDisplaySize(200,200);
+    
+    // 画像高さの変化量
+    this.dy = 2;
+    // 画像の高さ
+    this.h = 200;
 };
 
 mainScene.update = function() {
-
+    // 画像高さが200より小さくなると
+    if(this.h < 200) {
+        this.dy = -this.dy;
+    }
+    // 画像高さが400より大きくなると
+    if( this.h > 400 ) {
+        this.dy = -this.dy;
+    }
+    // 画像高さを変更
+    this.h += this.dy;
+    this.robotImage.displayHeight = this.h;
 };
 
 var config = {

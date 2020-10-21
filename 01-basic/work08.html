@@ -14,24 +14,19 @@ var mainScene = new Phaser.Scene("mainScene");
 mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('sky', '../assets/images/sky.jpg');
+    this.load.image('enemy01', '../assets/images/enemy01.png');
+    this.load.image('enemy02', '../assets/images/enemy02.png');
 };
 
 mainScene.create = function () {
     // 画像の表示
     this.add.image(400,300,'sky');
-    // 文字の表示
-    this.text1 = this.add.text(50, 50, "Score: 50" , {
-        font: '30px Open Sans',
-        fill: '#ff0000'
-    });
-    this.text2 = this.add.text(650, 50, "HP: 25" , {
-        font: '30px Open Sans',
-        fill: '#ff0000'
-    });
-};
-
-mainScene.update = function() {
-
+    
+    var enemyImage1 = this.add.image(50, 550, "enemy01");
+    enemyImage1.setDisplaySize(100, 100);
+    
+    var enemyImage2 = this.add.image(750, 550, "enemy02");
+    enemyImage2.setDisplaySize(100, 100);
 };
 
 var config = {

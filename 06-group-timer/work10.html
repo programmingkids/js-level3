@@ -15,7 +15,7 @@ mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('map01', '../assets/images/map01.png');
     // 敵画像の読み込み
-    this.load.image('enemy06', '../assets/images/enemy06.png');
+    this.load.image('enemy12', '../assets/images/enemy12.png');
 };
 
 mainScene.create = function () {
@@ -33,17 +33,42 @@ mainScene.create = function () {
         x: 25,
         y: 25
     });
+    
+    // 敵の数
+    this.enemyCount = 0;
+
+    // 文字の表示
+    this.text = this.add.text(700, 50, this.enemyCount , {
+        font: '40px Open Sans',
+        fill: '#ff0000'
+    });
+
     // 敵グループの作成
     this.enemyGroup = this.add.group();
-    for( var i = 0; i < 10; i++ ) {
-        var enemy = this.enemyGroup.create(0,0,'enemy06').setOrigin(0,0);
-        enemy.setDisplaySize(50,50);
-        enemy.setRandomPosition(0,0, 750, 550);
-    }
+    
+    // 2秒ごとに敵を作成するタイマー処理開始
+    this.timeEvent = this.time.addEvent({
+        delay: 2000,
+        callback: this.createEnemy,
+        loop: true,
+        callbackScope: this
+    });
 };
 
 mainScene.update = function() {
+
+};
+
+mainScene.createEnemy = function() {
+    // 敵の作成
+    var enemy = this.enemyGroup.create(0,0,'enemy12');
+    // 敵をランダムな位置に配置
+    enemy.setRandomPosition(25,25,750, 550);
+    // 敵のサイズを変更
+    enemy.setDisplaySize(50,50);
     
+    this.enemyCount++;
+    this.text.text = this.enemyCount;
 };
 
 var config = {

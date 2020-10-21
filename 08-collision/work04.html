@@ -14,8 +14,7 @@ var mainScene = new Phaser.Scene("mainScene");
 mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('map01', '../assets/images/map01.png');
-    this.load.image('treasure01', '../assets/images/treasure01.png');
-    this.load.image('enemy01', '../assets/images/enemy01.png');
+    this.load.image('enemy07', '../assets/images/enemy07.png');
     // スプライト画像の読み込み
     this.load.spritesheet('player', '../assets/images/player1.png', { frameWidth: 32, frameHeight: 32 });
 };
@@ -77,23 +76,8 @@ mainScene.create = function () {
         repeat: -1
     });
     
-    // スコア
-    this.score = 0;
-    // スコア文字の表示
-    this.scoreText = this.add.text(700, 50, this.score , {
-        font: '40px Open Sans',
-        fill: '#0000ff'
-    });
     // 重なったときに上に表示される画像を指定する。大きい数値が手前に表示される
     this.player.setDepth(1);
-    // 宝箱作成
-    this.createTreasure();
-
-    // 敵グループを作成　5体の敵を作成
-    this.enemyGroup = this.add.group({
-        key: 'enemy01',
-        repeat: 5,
-    });
 
     // プレイヤーのHP
     this.hp = 50;
@@ -103,16 +87,15 @@ mainScene.create = function () {
         fill: '#ff0000'
     });
     
-    // 敵グループの画像の設定
-    var enemies = this.enemyGroup.getChildren();
-    for( var i in enemies) {
-        var enemy = enemies[i];
-        enemy.setSize(50, 50);
-        enemy.setDisplaySize(50, 50);
-        enemy.setOrigin(0,0);
-        enemy.setRandomPosition(0, 0, 800 - enemy.width, 600 - enemy.height);
-        enemy.isHit = false;
-    }
+    // 敵グループの作成
+    this.enemyGroup = this.add.group();
+    
+    this.timeEvent = this.time.addEvent({
+        delay: 2000,
+        callback: this.createEnemy,
+        loop: true,
+        callbackScope: this
+    });
 };
 
 mainScene.update = function() {
@@ -143,23 +126,6 @@ mainScene.update = function() {
         this.player.anims.stop();
     }
     
-    // 画像の中心点の座標を取り出す
-    var playerVector2 = this.player.getCenter();
-    var treasure01Vector2 = this.treasure01.getCenter();
-    
-    // 画像の中心点の距離を計算して、距離が40以下なら重なると判定する
-    if(playerVector2.distance(treasure01Vector2) <= 40) {
-        // スコアを加算
-        this.score += 5;
-        // 更新したスコアを表示
-        this.scoreText.text = this.score;
-        // 宝箱削除
-        this.treasure01.destroy();
-        // 新しい宝箱を作成
-        this.createTreasure();
-        return;
-    }
-    
     // プレイヤー画像の四角形オブジェクトを取得
     var playerRect = this.player.getBounds();
     
@@ -168,6 +134,15 @@ mainScene.update = function() {
     // 敵配列に繰り返し処理を実行
     for( var i in enemies ) {
         var enemy = enemies[i];
+        // 敵の移動処理
+        if(enemy.x > 750) {
+            enemy.dx = -enemy.dx;
+        }
+        if(enemy.x < 0) {
+            enemy.dx = -enemy.dx;
+        }
+        enemy.x += enemy.dx;
+                
         // 敵画像の四角形オブジェクトを取得
         var enemyRect = enemy.getBounds();
         
@@ -188,12 +163,14 @@ mainScene.update = function() {
     }
 };
 
-mainScene.createTreasure = function() {
-    // 宝箱を表示する
-    this.treasure01 = this.add.image(0,0,'treasure01').setOrigin(0,0);
-    this.treasure01.setRandomPosition(0, 0, 800 - this.treasure01.width, 600 - this.treasure01.height);
-    // 重なったときに上に表示される画像を指定する。大きい数値が手前に表示される
-    this.treasure01.setDepth(0);
+mainScene.createEnemy = function() {
+    var enemy = this.enemyGroup.create(0,0,"enemy07");
+    enemy.setOrigin(0,0);
+    enemy.setRandomPosition(0,0,775, 575);
+    enemy.setDisplaySize(50,50);
+    enemy.isHit = false;
+    enemy.setDepth(0);
+    enemy.dx = 2;
 };
 
 var config = {
