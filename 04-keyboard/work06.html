@@ -32,21 +32,8 @@ mainScene.update = function() {
 
     // キーボードのカーソルオブジェクトを取得
     var cursors = this.input.keyboard.createCursorKeys();
-    // 右カーソルをクリックすると
-    if(cursors.right.isDown) {
-        // 右方法への移動
-        this.robotImage.x　+= speed;
-    }
-    // 左カーソルをクリックすると
-    if(cursors.left.isDown) {
-        // 左方向への移動
-        this.robotImage.x -= speed;
-    }
-    // スペースキーをクリックすると
-    if(cursors.space.isDown) {
-        // 時計回りに回転
-        this.robotImage.angle++;
-    }
+
+
 };
 
 var config = {

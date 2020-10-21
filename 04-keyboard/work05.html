@@ -29,16 +29,8 @@ mainScene.create = function () {
 mainScene.update = function() {
     // キーボードのカーソルオブジェクトを取得
     var cursors = this.input.keyboard.createCursorKeys();
-    // 右カーソルをクリックすると
-    if(cursors.right.isDown) {
-        // 時計回りの回転
-        this.robotImage.angle++;
-    }
-    // 左カーソルをクリックすると
-    if(cursors.left.isDown) {
-        // 反時計回りの回転
-        this.robotImage.angle--;
-    }
+
+
 };
 
 var config = {
