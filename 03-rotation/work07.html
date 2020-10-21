@@ -31,34 +31,7 @@ mainScene.create = function () {
 };
 
 mainScene.update = function() {
-    if(this.robotImage.x > 750) {
-        this.robotImage.x = 750;
-        this.dx = 0;
-        this.dy = 2;
-    }
-    if(this.robotImage.y > 550) {
-        this.robotImage.y = 550;
-        this.dx = -2;
-        this.dy = 0;
-    }
-    if(this.robotImage.x < 50) {
-        this.robotImage.x = 50;
-        this.dx = 0;
-        this.dy = -2;
-    }
-    if(this.robotImage.y < 50) {
-        this.robotImage.y = 50;
-        this.dx = 2;
-        this.dy = 0;
-    }
-    this.robotImage.x += this.dx;
-    this.robotImage.y += this.dy;
-    
-    this.angle++;
-    if(this.angle >= 360) {
-        this.angle = 0;
-    }
-    this.robotImage.setAngle(this.angle);
+
 };
 
 var config = {

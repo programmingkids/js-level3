@@ -32,17 +32,7 @@ mainScene.create = function () {
 };
 
 mainScene.update = function() {
-    // 画像高さが200より小さくなると
-    if(this.h < 200) {
-        this.dy = -this.dy;
-    }
-    // 画像高さが400より大きくなると
-    if( this.h > 400 ) {
-        this.dy = -this.dy;
-    }
-    // 画像高さを変更
-    this.h += this.dy;
-    this.robotImage.displayHeight = this.h;
+
 };
 
 var config = {

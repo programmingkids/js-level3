@@ -34,22 +34,7 @@ mainScene.create = function () {
 };
 
 mainScene.update = function() {
-    if(this.w < 200) {
-        this.dx = -this.dx;
-    }
-    if(this.h < 200) {
-        this.dy = -this.dy;
-    }
-    if(this.w > 250) {
-        this.dx = -this.dx;
-    }
-    if( this.h > 250 ) {
-        this.dy = -this.dy;
-    }
-    this.w += this.dx;
-    this.h += this.dy;
-    this.robotImage.displayWidth = this.w;
-    this.robotImage.displayHeight = this.h;
+
 };
 
 var config = {
