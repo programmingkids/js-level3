@@ -14,8 +14,6 @@ var mainScene = new Phaser.Scene("mainScene");
 mainScene.preload = function () {
     // 画像の読み込み
     this.load.image('map01', '../assets/images/map01.png');
-    // 敵画像の読み込み
-    this.load.image('enemy06', '../assets/images/enemy06.png');
 };
 
 mainScene.create = function () {
@@ -33,17 +31,39 @@ mainScene.create = function () {
         x: 25,
         y: 25
     });
-    // 敵グループの作成
-    this.enemyGroup = this.add.group();
-    for( var i = 0; i < 10; i++ ) {
-        var enemy = this.enemyGroup.create(0,0,'enemy06').setOrigin(0,0);
-        enemy.setDisplaySize(50,50);
-        enemy.setRandomPosition(0,0, 750, 550);
-    }
+    
+    // カウントする数値
+    this.count = 10;
+    
+    // 文字の表示
+    this.text = this.add.text(400, 300, this.count , {
+        font: '40px Open Sans',
+        fill: '#0000ff'
+    });
+    
+    // 1秒ごとにカウントダウンするタイマー処理開始
+    this.timeEvent = this.time.addEvent({
+        delay: 1000,
+        callback : this.countdown,
+        loop: true,
+        callbackScope: this
+    });
 };
 
 mainScene.update = function() {
-    
+
+};
+
+mainScene.countdown = function() {
+    this.count--;
+    this.text.text = this.count;
+    // 0になったら停止
+    if( this.count == 0 ) {
+        // タイマー停止
+        this.timeEvent.remove();
+        // 文字の色を赤に変更する
+        this.text.setFill("#ff0000");
+    }
 };
 
 var config = {
