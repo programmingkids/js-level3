@@ -45,14 +45,10 @@ mainScene.create = function () {
 
     // 敵グループの作成
     this.enemyGroup = this.add.group();
-    
-    // 2秒ごとに敵を作成するタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 2000,
-        callback: this.createEnemy,
-        loop: true,
-        callbackScope: this
-    });
+
+
+
+
 };
 
 mainScene.update = function() {
@@ -67,8 +63,9 @@ mainScene.createEnemy = function() {
     // 敵のサイズを変更
     enemy.setDisplaySize(50,50);
     
-    this.enemyCount++;
-    this.text.text = this.enemyCount;
+
+
+
 };
 
 var config = {

@@ -33,13 +33,9 @@ mainScene.create = function () {
         x: 25,
         y: 25
     });
-    // 敵グループの作成
-    this.enemyGroup = this.add.group();
-    for( var i = 0; i < 10; i++ ) {
-        var enemy = this.enemyGroup.create(0,0,'enemy06').setOrigin(0,0);
-        enemy.setDisplaySize(50,50);
-        enemy.setRandomPosition(0,0, 750, 550);
-    }
+
+
+
 };
 
 mainScene.update = function() {

@@ -32,22 +32,8 @@ mainScene.create = function () {
         y: 25
     });
     
-    // カウントする数値
-    this.count = 0;
-    
-    // 文字の表示
-    this.text = this.add.text(400, 300, this.count , {
-        font: '40px Open Sans',
-        fill: '#0000ff'
-    });
-    
-    // 1秒ごとにカウントアップするタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 1000,
-        callback : this.countup,
-        loop: true,
-        callbackScope: this
-    });
+
+
 };
 
 mainScene.update = function() {
@@ -55,10 +41,9 @@ mainScene.update = function() {
 };
 
 mainScene.countup = function() {
-    // カウントアップ
-    this.count++;
-    // 数値をテキストに反映する
-    this.text.text = this.count;
+
+
+
 };
 
 var config = {

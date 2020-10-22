@@ -36,32 +36,14 @@ mainScene.create = function () {
     // 敵グループの作成
     this.enemyGroup = this.add.group();
     
-    // 2秒ごとに敵を作成するタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 2000,
-        callback: this.createEnemy,
-        loop: true,
-        callbackScope: this
-    });
+
+
 };
 
 mainScene.update = function() {
-    // 敵グループから配列を取得
-    var enemies = this.enemyGroup.getChildren();
-    // 敵オブジェクトの配列に繰り返し処理
-    for(var i in enemies) {
-        // 個別の敵を取得
-        var enemy = enemies[i];
-        
-        if( enemy.size > 70 ) {
-            enemy.ds = -enemy.ds;
-        }
-        if( enemy.size < 50 ) {
-            enemy.ds = -enemy.ds;
-        }
-        enemy.size += enemy.ds;
-        enemy.setDisplaySize(enemy.size, enemy.size);
-    }
+
+
+
 };
 
 mainScene.createEnemy = function() {

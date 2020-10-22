@@ -41,13 +41,8 @@ mainScene.create = function () {
         fill: '#0000ff'
     });
     
-    // 1秒ごとにカウントアップするタイマー処理開始
-    this.timeEvent = this.time.addEvent({
-        delay: 1000,
-        callback : this.countup,
-        loop: true,
-        callbackScope: this
-    });
+
+
 };
 
 mainScene.update = function() {
@@ -55,15 +50,9 @@ mainScene.update = function() {
 };
 
 mainScene.countup = function() {
-    this.count++;
-    this.text.text = this.count;
-    // 10になったら停止
-    if( this.count == 10 ) {
-        // タイマー停止
-        this.timeEvent.remove();
-        // 文字の色を赤に変更する
-        this.text.setFill("#ff0000");
-    }
+
+
+
 };
 
 var config = {
