@@ -90,12 +90,9 @@ mainScene.create = function () {
     // 敵グループの作成
     this.enemyGroup = this.add.group();
     
-    this.timeEvent = this.time.addEvent({
-        delay: 2000,
-        callback: this.createEnemy,
-        loop: true,
-        callbackScope: this
-    });
+
+
+
 };
 
 mainScene.update = function() {
@@ -125,33 +122,10 @@ mainScene.update = function() {
         // キーを放すとアニメーション停止
         this.player.anims.stop();
     }
-    
-    // プレイヤー画像の四角形オブジェクトを取得
-    var playerRect = this.player.getBounds();
-    
-    // 敵グループから、敵配列を取得
-    var enemies = this.enemyGroup.getChildren();
-    // 敵配列に繰り返し処理を実行
-    for( var i in enemies ) {
-        var enemy = enemies[i];
-        // 敵画像の四角形オブジェクトを取得
-        var enemyRect = enemy.getBounds();
-        
-        // プレイヤと敵の四角形が重なっていれば
-        if(Phaser.Geom.Intersects.RectangleToRectangle(playerRect, enemyRect)) {
-            // 衝突
-            if( !enemy.isHit ) {
-                // HPを減算
-                this.hp -= 10;
-                this.hpText.text = this.hp;
-                // 衝突している時は、衝突フラグを設定
-                enemy.isHit = true;
-            }
-        } else {
-            // 距離が離れたので、衝突フラグを解除
-            enemy.isHit = false;
-        }
-    }
+
+
+
+
 };
 
 mainScene.createEnemy = function() {

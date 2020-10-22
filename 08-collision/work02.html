@@ -95,24 +95,9 @@ mainScene.create = function () {
         repeat: 5,
     });
 
-    // プレイヤーのHP
-    this.hp = 50;
-    // HPを文字で表示する
-    this.hpText = this.add.text(30, 20, this.hp, {
-        font: '40px Open Sans',
-        fill: '#ff0000'
-    });
-    
-    // 敵グループの画像の設定
-    var enemies = this.enemyGroup.getChildren();
-    for( var i in enemies) {
-        var enemy = enemies[i];
-        enemy.setSize(50, 50);
-        enemy.setDisplaySize(50, 50);
-        enemy.setOrigin(0,0);
-        enemy.setRandomPosition(0, 0, 800 - enemy.width, 600 - enemy.height);
-        enemy.isHit = false;
-    }
+
+
+
 };
 
 mainScene.update = function() {
@@ -159,33 +144,10 @@ mainScene.update = function() {
         this.createTreasure();
         return;
     }
-    
-    // プレイヤー画像の四角形オブジェクトを取得
-    var playerRect = this.player.getBounds();
-    
-    // 敵グループから、敵配列を取得
-    var enemies = this.enemyGroup.getChildren();
-    // 敵配列に繰り返し処理を実行
-    for( var i in enemies ) {
-        var enemy = enemies[i];
-        // 敵画像の四角形オブジェクトを取得
-        var enemyRect = enemy.getBounds();
-        
-        // プレイヤと敵の四角形が重なっていれば
-        if(Phaser.Geom.Intersects.RectangleToRectangle(playerRect, enemyRect)) {
-            // 衝突
-            if( !enemy.isHit ) {
-                // HPを減算
-                this.hp -= 10;
-                this.hpText.text = this.hp;
-                // 衝突している時は、衝突フラグを設定
-                enemy.isHit = true;
-            }
-        } else {
-            // 距離が離れたので、衝突フラグを解除
-            enemy.isHit = false;
-        }
-    }
+
+
+
+
 };
 
 mainScene.createTreasure = function() {
